@@ -26,4 +26,14 @@ export const registerUserApi = (data) => {
     return Api.post('api/user/create', data);
 }
 
+// Login Api
+export const loginUserApi = (data) => Api.post('/api/user/login', data)
+
+// google login
+export const googleLoginApi = (data) => Api.post("/api/user/google", data);
+
+// get by email
+export const getUserByGoogleEmail = (data) =>
+	Api.post(`/api/user/getGoogleUser`, data);
+
 export default Api;
