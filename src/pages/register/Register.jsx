@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
 import { registerUserApi } from '../../apis/Apis';
-import { User, Mail, Phone, Lock, UserCircle, UserCheck } from 'lucide-react';
+import { User, Mail, Phone, Lock, UserCircle } from 'lucide-react';
 import registerui from '../../assets/images/register_image.jpg';
 
 function Register() {
@@ -105,7 +105,7 @@ function Register() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-500 to-pink-500 p-4">
+        <div className="min-h-screen flex items-center justify-center ">
             <Toaster />
             <div className="bg-blue-100 rounded-lg shadow-xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row">
                 <div className="w-full md:w-1/2 p-8">
@@ -261,3 +261,5 @@ function Register() {
 }
 
 export default Register;
+
+
