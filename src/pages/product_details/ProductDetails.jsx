@@ -6,12 +6,9 @@ import Navbar from "../../components/Navbar";
 import Modal from "react-modal";
 import axios from "axios";
 import {
-  Star,
   ShoppingCart,
-  CreditCard,
   Camera,
   X,
-  Edit,
   Plus,
   Minus,
   Facebook,
@@ -131,55 +128,47 @@ const ProductDetails = () => {
   };
 
   const captureFrame = () => {
+    if (!videoRef.current || !canvasRef.current) return;
+  
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
+  
     if (videoRef.current.readyState === videoRef.current.HAVE_ENOUGH_DATA) {
       canvas.width = videoRef.current.videoWidth;
       canvas.height = videoRef.current.videoHeight;
       context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-      console.log("Frame captured from video");
+  
       canvas.toBlob((blob) => {
-        if (blob) {
-          console.log("Frame blob created, sending to backend");
-          sendFrameToBackend(blob);
-        }
+        if (blob) sendFrameToBackend(blob);
       }, "image/jpeg");
     }
   };
 
   const sendFrameToBackend = async (blob) => {
-    const formData = new FormData();
-    formData.append("frame", blob, "frame.jpg");
-    formData.append("tshirt_image",`http://localhost:5000/products/${mainImage}`);
+  const formData = new FormData();
+  formData.append("frame", blob, "frame.jpg");
+  formData.append("tshirt_image", `http://localhost:5000/products/${mainImage}`);
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5001/process_frame",
-        formData
-      );
-      drawGlasses(response.data);
-    } catch (error) {
-      console.error("Error sending frame to backend:", error);
-      // toast.error("Virtual try-on processing failed");
-    }
+  try {
+    const response = await axios.post("http://localhost:5001/process_frame", formData);
+    drawOverlay(response.data);
+  } catch (error) {
+    console.error("Error sending frame to backend:", error);
+  }
+};
+
+const drawOverlay = (data) => {
+  const canvas = outputCanvasRef.current;
+  const context = canvas.getContext("2d");
+  const image = new Image();
+  image.src = "data:image/jpeg;base64," + data.image;
+  image.onload = () => {
+    canvas.width = image.width;
+    canvas.height = image.height;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
   };
-
-  const drawGlasses = (data) => {
-    const canvas = outputCanvasRef.current;
-    const context = canvas.getContext("2d");
-    console.log("Canvas dimensions:", canvas.width, canvas.height);
-
-    const image = new Image();
-    image.src = "data:image/png;base64," + data.image;
-    image.onload = () => {
-      console.log("Image loaded:", image.width, image.height);
-      canvas.width = image.width;
-      canvas.height = image.height;
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(image, 0, 0, canvas.width, canvas.height);
-      console.log("Glasses drawn on canvas");
-    };
-  };
+};
 
   useEffect(() => {
     if (isTryOnActive) {
@@ -268,7 +257,7 @@ const ProductDetails = () => {
               </h1>
 
               <div className="text-3xl font-bold text-indigo-600 mb-4">
-                ${product.productPrice.toFixed(2)}
+                Rs {product.productPrice.toFixed(2)}
               </div>
 
               <p className="text-gray-600 mb-6 leading-relaxed">
@@ -367,14 +356,14 @@ const ProductDetails = () => {
                 <button
                   onClick={addToCart}
                   disabled={isOutStock}
-                  className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-md font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                  className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 rounded-md font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                 >
                   <ShoppingCart className="w-4 h-4 mr-2" />
                   Add to Cart
                 </button>
                 <button
                   onClick={openModal}
-                  className="flex-1 bg-pink-900 text-white px-4 py-2 rounded-md font-semibold hover:from-purple-600 hover:to-pink-700 transition-all duration-300 flex items-center justify-center shadow-md text-sm"
+                  className="flex-1 bg-purple-700 text-white px-4 py-2 rounded-md font-semibold hover:from-purple-600 hover:to-pink-700 transition-all duration-300 flex items-center justify-center shadow-md text-sm"
                 >
                   <Camera className="w-4 h-4 mr-2" />
                   Try On

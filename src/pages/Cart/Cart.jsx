@@ -122,7 +122,7 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <Navbar />
-      <div className="container mx-auto p-5 pt-20">
+      <div className="container mx-auto p-6 pt-20">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

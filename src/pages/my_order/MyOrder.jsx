@@ -342,9 +342,7 @@ const MyOrders = () => {
                       <span className="text-2xl font-semibold text-gray-800">
                         Order #{order._id.slice(-6)}
                       </span>
-                      <p className="text-sm text-gray-600">
-                        {new Date(order.createdAt).toLocaleDateString()}
-                      </p>
+                      
                     </div>
                   </div>
                   <div className="flex items-center space-x-4">

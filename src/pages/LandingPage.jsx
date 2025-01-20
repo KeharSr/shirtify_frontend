@@ -56,168 +56,174 @@ const Stats = () => (
 const Navbar = ({ isLoggedIn, logo }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
-          {/* Logo Section */}
-          <div className="flex items-center">
-            <div className="flex items-center space-x-3">
-              <a href="/" className="flex items-center space-x-2">
-                {logo && (
-                  <img 
-                    src={logo} 
-                    alt="Store Logo"
-                    className="h-12 w-auto object-contain"
-                  />
-                )}
-                
-              </a>
-            </div>
-          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {isLoggedIn ? (
-              <>
-                <div className="flex items-center space-x-6">
-                  <a
-                    href="/cart"
-                    className="text-gray-700 hover:text-indigo-600 transition-colors duration-200 relative"
-                  >
-                    <ShoppingCart className="h-6 w-6" />
-                    <span className="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                      0
-                    </span>
-                  </a>
-                  <div className="relative group">
-                    <button className="text-gray-700 hover:text-indigo-600 transition-colors duration-200">
-                      <User className="h-6 w-6" />
-                    </button>
-                    <div className="absolute right-0 w-48 mt-2 py-2 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <a
-                        href="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50"
-                      >
-                        Profile
-                      </a>
-                      <a
-                        href="/orders"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50"
-                      >
-                        Orders
-                      </a>
-                      <a
-                        href="/settings"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50"
-                      >
-                        Settings
-                      </a>
-                      <hr className="my-2" />
-                      <a
-                        href="/logout"
-                        className="block px-4 py-2 text-sm text-red-600 hover:bg-red-50"
-                      >
-                        Logout
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <div className="flex items-center space-x-4">
-                <a
-                  href="/login"
-                  className="px-6 py-2.5 rounded-md text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50 transition-colors duration-200 font-medium"
-                >
-                  Login
-                </a>
-                <a
-                  href="/register"
-                  className="px-6 py-2.5 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200 font-medium"
-                >
-                  Register
+  return (
+    <>
+      <nav className="bg-white shadow-lg sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-20">
+            {/* Logo Section */}
+            <div className="flex items-center">
+              <div className="flex items-center space-x-3">
+                <a href="/" className="flex items-center space-x-2">
+                  {logo && (
+                    <img 
+                      src={logo} 
+                      alt="Store Logo"
+                      className="h-12 w-auto object-contain"
+                    />
+                  )}
                 </a>
               </div>
-            )}
-          </div>
+            </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-indigo-600 transition-colors duration-200"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
-            <div className="flex flex-col space-y-3">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
               {isLoggedIn ? (
                 <>
-                  <a
-                    href="/cart"
-                    className="text-gray-700 hover:text-indigo-600 py-2 transition-colors duration-200"
-                  >
-                    Cart
-                  </a>
-                  <a
-                    href="/profile"
-                    className="text-gray-700 hover:text-indigo-600 py-2 transition-colors duration-200"
-                  >
-                    Profile
-                  </a>
-                  <a
-                    href="/orders"
-                    className="text-gray-700 hover:text-indigo-600 py-2 transition-colors duration-200"
-                  >
-                    Orders
-                  </a>
-                  <a
-                    href="/settings"
-                    className="text-gray-700 hover:text-indigo-600 py-2 transition-colors duration-200"
-                  >
-                    Settings
-                  </a>
-                  <a
-                    href="/logout"
-                    className="text-red-600 hover:text-red-700 py-2 transition-colors duration-200"
-                  >
-                    Logout
-                  </a>
+                  <div className="flex items-center space-x-6">
+                    <a
+                      href="/cart"
+                      className="text-gray-700 hover:text-indigo-600 transition-colors duration-200 relative"
+                    >
+                      <ShoppingCart className="h-6 w-6" />
+                      <span className="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                        0
+                      </span>
+                    </a>
+                    <div className="relative group">
+                      <button className="text-gray-700 hover:text-indigo-600 transition-colors duration-200">
+                        <User className="h-6 w-6" />
+                      </button>
+                      <div className="absolute right-0 w-48 mt-2 py-2 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <a
+                          href="/profile"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50"
+                        >
+                          Profile
+                        </a>
+                        <a
+                          href="/orders"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50"
+                        >
+                          Orders
+                        </a>
+                        <a
+                          href="/settings"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50"
+                        >
+                          Settings
+                        </a>
+                        <hr className="my-2" />
+                        <a
+                          href="/logout"
+                          className="block px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                        >
+                          Logout
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </>
               ) : (
-                <div className="flex flex-col space-y-3 pt-2">
+                <div className="flex items-center space-x-4">
                   <a
                     href="/login"
-                    className="px-4 py-3 text-center rounded-md text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50 transition-colors duration-200 font-medium"
+                    className="px-6 py-2.5 rounded-md text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50 transition-colors duration-200 font-medium"
                   >
                     Login
                   </a>
                   <a
-                    href="/register"
-                    className="px-4 py-3 text-center rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200 font-medium"
+                    href="/login"
+                    className="px-6 py-2.5 rounded-md text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50 transition-colors duration-200 font-medium"
                   >
                     Register
                   </a>
                 </div>
               )}
             </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-gray-700 hover:text-indigo-600 transition-colors duration-200"
+                aria-label="Toggle menu"
+              >
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
-        )}
-      </div>
-    </nav>
+
+          {/* Mobile Navigation */}
+          {isOpen && (
+            <div className="md:hidden py-4 border-t border-gray-100">
+              <div className="flex flex-col space-y-3">
+                {isLoggedIn ? (
+                  <>
+                    <a
+                      href="/cart"
+                      className="text-gray-700 hover:text-indigo-600 py-2 transition-colors duration-200"
+                    >
+                      Cart
+                    </a>
+                    <a
+                      href="/profile"
+                      className="text-gray-700 hover:text-indigo-600 py-2 transition-colors duration-200"
+                    >
+                      Profile
+                    </a>
+                    <a
+                      href="/orders"
+                      className="text-gray-700 hover:text-indigo-600 py-2 transition-colors duration-200"
+                    >
+                      Orders
+                    </a>
+                    <a
+                      href="/settings"
+                      className="text-gray-700 hover:text-indigo-600 py-2 transition-colors duration-200"
+                    >
+                      Settings
+                    </a>
+                    <a
+                      href="/logout"
+                      className="text-red-600 hover:text-red-700 py-2 transition-colors duration-200"
+                    >
+                      Logout
+                    </a>
+                  </>
+                ) : (
+                  <div className="flex flex-col space-y-3 pt-2">
+                    <a
+                      href="/login"
+                      className="px-4 py-3 text-center rounded-md text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50 transition-colors duration-200 font-medium"
+                    >
+                      Login
+                    </a>
+                    <a
+                      href="/register"
+                      className="px-4 py-3 text-center rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 font-medium"
+                    >
+                      Register
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
+     
+      
+    </>
   );
 };
+
 
 const Testimonials = () => {
   const testimonials = [
@@ -356,22 +362,22 @@ const Footer = () => (
           <h3 className="text-xl font-bold mb-4">Help</h3>
           <ul className="space-y-3 text-gray-400">
             <li>
-              <a href="/sizing" className="hover:text-white transition-colors duration-200">
+              <a href="/help" className="hover:text-white transition-colors duration-200">
                 Sizing Guide
               </a>
             </li>
             <li>
-              <a href="/shipping" className="hover:text-white transition-colors duration-200">
+              <a href="/help" className="hover:text-white transition-colors duration-200">
                 Shipping Info
               </a>
             </li>
             <li>
-              <a href="/returns" className="hover:text-white transition-colors duration-200">
+              <a href="/help" className="hover:text-white transition-colors duration-200">
                 Returns
               </a>
             </li>
             <li>
-              <a href="/faq" className="hover:text-white transition-colors duration-200">
+              <a href="/help" className="hover:text-white transition-colors duration-200">
                 FAQ
               </a>
             </li>
@@ -420,6 +426,11 @@ const LandingPage = () => {
   const [loading, setLoading] = useState(true);
   const [randomLink, setRandomLink] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // In your landing page component
+
+
+// Update your register button
+
 
   useEffect(() => {
     getAllProductsApi()
@@ -450,13 +461,15 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar isLoggedIn={isLoggedIn} logo={logo} />
-      <main>
+      <main >
         {/* Hero Section with proper image sizing */}
-        <div className="relative h-[600px] overflow-hidden">
+        <div className="relative h-[750px] overflow-hidden">
           <Hero />
         </div>
         
-        <Stats />
+        <div className="mt-16"> {/* Added negative margin to reduce gap */}
+          <Stats />
+        </div>
 
         {/* Featured Products Section */}
         <section className="py-20 bg-white">

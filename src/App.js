@@ -19,6 +19,7 @@ import Favorites from "./pages/favourites/Favourites";
 import HelpDocumentation from "./pages/documentation/Documentation";
 import LandingPage from "./pages/LandingPage";
 import ForgetPassword from "./pages/forgetpassword/ForgetPassword";
+import PaymentSuccess from "./pages/payment_sucessfull/PaymentSucessPage";
 
 function App() {
   return (
@@ -48,6 +49,8 @@ function App() {
           <Route path="/profile" element={< EditProfile/>} />
           <Route path="/favourites" element={<Favorites/>} />
           <Route path="/help" element={<HelpDocumentation/>} />
+          <Route path="/payment-success" element={<PaymentSuccess/>} />
+
           
           </Route> 
           <Route path="/forgetpassword" element={<ForgetPassword />} />
