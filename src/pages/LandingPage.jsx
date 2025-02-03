@@ -56,7 +56,6 @@ const Stats = () => (
 const Navbar = ({ isLoggedIn, logo }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-
   return (
     <>
       <nav className="bg-white shadow-lg sticky top-0 z-50">
@@ -67,8 +66,8 @@ const Navbar = ({ isLoggedIn, logo }) => {
               <div className="flex items-center space-x-3">
                 <a href="/" className="flex items-center space-x-2">
                   {logo && (
-                    <img 
-                      src={logo} 
+                    <img
+                      src={logo}
                       alt="Store Logo"
                       className="h-12 w-auto object-contain"
                     />
@@ -217,13 +216,9 @@ const Navbar = ({ isLoggedIn, logo }) => {
           )}
         </div>
       </nav>
-
-     
-      
     </>
   );
 };
-
 
 const Testimonials = () => {
   const testimonials = [
@@ -337,22 +332,34 @@ const Footer = () => (
           <h3 className="text-xl font-bold mb-4">Shop</h3>
           <ul className="space-y-3 text-gray-400">
             <li>
-              <a href="/new-arrivals" className="hover:text-white transition-colors duration-200">
+              <a
+                href="/new-arrivals"
+                className="hover:text-white transition-colors duration-200"
+              >
                 New Arrivals
               </a>
             </li>
             <li>
-              <a href="/bestsellers" className="hover:text-white transition-colors duration-200">
+              <a
+                href="/bestsellers"
+                className="hover:text-white transition-colors duration-200"
+              >
                 Bestsellers
               </a>
             </li>
             <li>
-              <a href="/brands" className="hover:text-white transition-colors duration-200">
+              <a
+                href="/brands"
+                className="hover:text-white transition-colors duration-200"
+              >
                 Brands
               </a>
             </li>
             <li>
-              <a href="/sale" className="hover:text-white transition-colors duration-200">
+              <a
+                href="/sale"
+                className="hover:text-white transition-colors duration-200"
+              >
                 Sale
               </a>
             </li>
@@ -362,22 +369,34 @@ const Footer = () => (
           <h3 className="text-xl font-bold mb-4">Help</h3>
           <ul className="space-y-3 text-gray-400">
             <li>
-              <a href="/help" className="hover:text-white transition-colors duration-200">
+              <a
+                href="/help"
+                className="hover:text-white transition-colors duration-200"
+              >
                 Sizing Guide
               </a>
             </li>
             <li>
-              <a href="/help" className="hover:text-white transition-colors duration-200">
+              <a
+                href="/help"
+                className="hover:text-white transition-colors duration-200"
+              >
                 Shipping Info
               </a>
             </li>
             <li>
-              <a href="/help" className="hover:text-white transition-colors duration-200">
+              <a
+                href="/help"
+                className="hover:text-white transition-colors duration-200"
+              >
                 Returns
               </a>
             </li>
             <li>
-              <a href="/help" className="hover:text-white transition-colors duration-200">
+              <a
+                href="/help"
+                className="hover:text-white transition-colors duration-200"
+              >
                 FAQ
               </a>
             </li>
@@ -391,7 +410,10 @@ const Footer = () => (
             <li>Address: 123 Fashion St, Style City</li>
           </ul>
           <div className="mt-6 flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+            <a
+              href="#"
+              className="text-gray-400 hover:text-white transition-colors duration-200"
+            >
               <span className="sr-only">Facebook</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -401,7 +423,10 @@ const Footer = () => (
                 />
               </svg>
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+            <a
+              href="#"
+              className="text-gray-400 hover:text-white transition-colors duration-200"
+            >
               <span className="sr-only">Instagram</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -428,9 +453,7 @@ const LandingPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // In your landing page component
 
-
-// Update your register button
-
+  // Update your register button
 
   useEffect(() => {
     getAllProductsApi()
@@ -461,13 +484,15 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar isLoggedIn={isLoggedIn} logo={logo} />
-      <main >
+      <main>
         {/* Hero Section with proper image sizing */}
         <div className="relative h-[750px] overflow-hidden">
           <Hero />
         </div>
-        
-        <div className="mt-16"> {/* Added negative margin to reduce gap */}
+
+        <div className="mt-16">
+          {" "}
+          {/* Added negative margin to reduce gap */}
           <Stats />
         </div>
 
@@ -503,7 +528,7 @@ const LandingPage = () => {
         </section>
 
         <Testimonials />
-        
+
         {/* Banner with proper sizing */}
         <div className="relative overflow-hidden">
           <Banner />
